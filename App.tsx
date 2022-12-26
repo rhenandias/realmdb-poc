@@ -6,15 +6,15 @@ import React from "react";
 import { NativeBaseProvider, StatusBar } from "native-base";
 import { Routes } from "./src/routes";
 
-import { DatabaseProvider } from "./realm/provider";
+import { RealmProvider } from "./realm/provider";
 
 export default function App() {
   return (
     <NativeBaseProvider>
       <StatusBar barStyle="light-content" backgroundColor="black" />
-      <DatabaseProvider>
+      <RealmProvider>
         <Routes />
-      </DatabaseProvider>
+      </RealmProvider>
     </NativeBaseProvider>
   );
 }

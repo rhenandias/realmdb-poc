@@ -2,7 +2,7 @@ import Realm from "realm";
 
 import ClientSchema from "../models/client";
 
-async function initializeDatabase(): Promise<Realm | null> {
+async function initializeRealm(): Promise<Realm | null> {
   const realm = await Realm.open({
     schema: [ClientSchema],
     schemaVersion: 5,
@@ -11,4 +11,4 @@ async function initializeDatabase(): Promise<Realm | null> {
   return realm;
 }
 
-export { initializeDatabase };
+export { initializeRealm };

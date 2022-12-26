@@ -9,10 +9,10 @@ import {
   useToast,
 } from "native-base";
 import React, { useContext, useState } from "react";
-import { DatabaseContext, DatabaseContextProps } from "../../../realm/context";
+import { RealmContext, RealmContextProps } from "../../../realm/context";
 
 export function Config() {
-  const { realm } = useContext(DatabaseContext) as DatabaseContextProps;
+  const { realm } = useContext(RealmContext) as RealmContextProps;
 
   const toast = useToast();
 

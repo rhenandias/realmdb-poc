@@ -2,16 +2,16 @@ import { useState, useEffect, PropsWithChildren } from "react";
 
 import { Text } from "native-base";
 
-import { DatabaseContext, DatabaseContextProps } from "../context";
+import { RealmContext, RealmContextProps } from "../context";
 
-import { initializeDatabase } from "../config";
+import { initializeRealm } from "../config";
 
-export function DatabaseProvider({ children }: PropsWithChildren) {
-  const [realm, setRealm] = useState<DatabaseContextProps | null>(null);
+export function RealmProvider({ children }: PropsWithChildren) {
+  const [realm, setRealm] = useState<RealmContextProps | null>(null);
 
   useEffect(() => {
     async function load() {
-      const db = await initializeDatabase();
+      const db = await initializeRealm();
 
       if (db) {
         setRealm({ realm: db });
@@ -24,9 +24,7 @@ export function DatabaseProvider({ children }: PropsWithChildren) {
   return (
     <>
       {realm && (
-        <DatabaseContext.Provider value={realm}>
-          {children}
-        </DatabaseContext.Provider>
+        <RealmContext.Provider value={realm}>{children}</RealmContext.Provider>
       )}
 
       {!realm && <Text>Loading Database </Text>}

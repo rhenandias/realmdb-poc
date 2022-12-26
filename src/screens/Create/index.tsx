@@ -10,12 +10,12 @@ import {
   VStack,
   useToast,
 } from "native-base";
-import { DatabaseContext, DatabaseContextProps } from "../../../realm/context";
+import { RealmContext, RealmContextProps } from "../../../realm/context";
 
 import { v4 } from "uuid";
 
 export function Create() {
-  const { realm } = useContext(DatabaseContext) as DatabaseContextProps;
+  const { realm } = useContext(RealmContext) as RealmContextProps;
 
   const toast = useToast();
 

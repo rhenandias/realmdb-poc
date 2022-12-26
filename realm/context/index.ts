@@ -2,10 +2,10 @@ import { createContext } from "react";
 
 import Realm from "realm";
 
-export interface DatabaseContextProps {
+export interface RealmContextProps {
   realm: Realm;
 }
 
-const DatabaseContext = createContext({} as DatabaseContextProps | null);
+const RealmContext = createContext({} as RealmContextProps | null);
 
-export { DatabaseContext };
+export { RealmContext };

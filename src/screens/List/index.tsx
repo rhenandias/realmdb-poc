@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Center, Flex, Text, VStack, ScrollView } from "native-base";
 
 import { RefreshControl } from "react-native";
-import { DatabaseContext, DatabaseContextProps } from "../../../realm/context";
+import { RealmContext, RealmContextProps } from "../../../realm/context";
 
 interface Client {
   _id: string;
@@ -42,7 +42,7 @@ function ClientCard(client: Client) {
 }
 
 export function List() {
-  const { realm } = useContext(DatabaseContext) as DatabaseContextProps;
+  const { realm } = useContext(RealmContext) as RealmContextProps;
 
   const [clients, setClients] = useState<Client[]>();
   const [loaded, setLoaded] = useState<boolean>(false);
