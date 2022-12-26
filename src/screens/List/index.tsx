@@ -42,7 +42,7 @@ function ClientCard(client: Client) {
 }
 
 export function List() {
-  const { database } = useContext(DatabaseContext) as DatabaseContextProps;
+  const { realm } = useContext(DatabaseContext) as DatabaseContextProps;
 
   const [clients, setClients] = useState<Client[]>();
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -53,7 +53,7 @@ export function List() {
   }, []);
 
   async function load() {
-    const clients = database.objects("Client") as unknown;
+    const clients = realm.objects("Client") as unknown;
 
     setClients(clients as Client[]);
 

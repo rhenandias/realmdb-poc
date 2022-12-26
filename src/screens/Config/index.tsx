@@ -12,7 +12,7 @@ import React, { useContext, useState } from "react";
 import { DatabaseContext, DatabaseContextProps } from "../../../realm/context";
 
 export function Config() {
-  const { database } = useContext(DatabaseContext) as DatabaseContextProps;
+  const { realm } = useContext(DatabaseContext) as DatabaseContextProps;
 
   const toast = useToast();
 
@@ -27,10 +27,10 @@ export function Config() {
   }
 
   function clearDatabase() {
-    database.write(() => {
-      const clients = database.objects("Client");
+    realm.write(() => {
+      const clients = realm.objects("Client");
 
-      database.delete(clients);
+      realm.delete(clients);
 
       toast.show({
         description: "Os dados foram apagados com sucesso",

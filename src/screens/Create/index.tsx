@@ -15,7 +15,7 @@ import { DatabaseContext, DatabaseContextProps } from "../../../realm/context";
 import { v4 } from "uuid";
 
 export function Create() {
-  const { database } = useContext(DatabaseContext) as DatabaseContextProps;
+  const { realm } = useContext(DatabaseContext) as DatabaseContextProps;
 
   const toast = useToast();
 
@@ -38,8 +38,8 @@ export function Create() {
   async function handleSubmit() {
     let client;
 
-    database.write(() => {
-      client = database.create("Client", {
+    realm.write(() => {
+      client = realm.create("Client", {
         _id: v4(),
         nome,
         razaoSocial,

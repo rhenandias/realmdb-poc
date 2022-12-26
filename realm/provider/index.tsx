@@ -7,14 +7,14 @@ import { DatabaseContext, DatabaseContextProps } from "../context";
 import { initializeDatabase } from "../config";
 
 export function DatabaseProvider({ children }: PropsWithChildren) {
-  const [database, setDatabase] = useState<DatabaseContextProps | null>(null);
+  const [realm, setRealm] = useState<DatabaseContextProps | null>(null);
 
   useEffect(() => {
     async function load() {
       const db = await initializeDatabase();
 
       if (db) {
-        setDatabase({ database: db });
+        setRealm({ realm: db });
       }
     }
 
@@ -23,13 +23,13 @@ export function DatabaseProvider({ children }: PropsWithChildren) {
 
   return (
     <>
-      {database && (
-        <DatabaseContext.Provider value={database}>
+      {realm && (
+        <DatabaseContext.Provider value={realm}>
           {children}
         </DatabaseContext.Provider>
       )}
 
-      {!database && <Text>Loading Database </Text>}
+      {!realm && <Text>Loading Database </Text>}
     </>
   );
 }
